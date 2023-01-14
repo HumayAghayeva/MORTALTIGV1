@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>MORTALTIG-ADMIN</title>
+
+    <!-- ================= Favicon ================== -->
+    <!-- Standard -->
+    <link rel="shortcut icon" href="http://placehold.it/64.png/000/fff">
+    <!-- Retina iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://placehold.it/144.png/000/fff">
+    <!-- Retina iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="114x114" href="http://placehold.it/114.png/000/fff">
+    <!-- Standard iPad Touch Icon-->
+    <link rel="apple-touch-icon" sizes="72x72" href="http://placehold.it/72.png/000/fff">
+    <!-- Standard iPhone Touch Icon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="http://placehold.it/57.png/000/fff">
+
+    <!-- Styles -->
+    <link href="~/Admin/css/lib/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Admin/css/lib/themify-icons.css" rel="stylesheet">
+    <link href="~/Admin/css/lib/data-table/buttons.bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Admin/css/lib/menubar/sidebar.css" rel="stylesheet">
+    <link href="~/Admin/css/lib/bootstrap.min.css" rel="stylesheet">
+    <link href="~/Admin/css/lib/helper.css" rel="stylesheet">
+    <link href="~/Admin/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+        <div class="nano">
+            <div class="nano-content">
+                <div class="logo"><a href="index.html"><!-- <img src="images/logo.png" alt="" /> --><span>MORTALTIG-ADMIN</span></a></div>
+                <ul>
+                    <li class="label">Main</li>
+                    <li>
+                        <a class="sidebar-sub-toggle"><i class="ti-home"></i> Dashboard <span class="badge badge-primary">2</span> <span class="sidebar-collapse-icon ti-angle-down"></span></a>
+                        <ul>
+                            <li><a asp-controller="FAQ" asp-action="Index">FAQ</a></li>
+                            <li><a asp-controller="RoadMap" asp-action="Index">RoadMap </a></li>
+                           @* <li><a asp-controller="Team" asp-action="Index">Team </a></li>*@
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- /# sidebar -->
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+            @RenderSection("Scripts", required: false)
+        </main>
+    </div>
+   
+    <!-- jquery vendor -->
+    <script src="~/Admin/js/lib/jquery.min.js"></script>
+    <script src="~/Admin/js/lib/jquery.nanoscroller.min.js"></script>
+    <!-- nano scroller -->
+    <script src="~/Admin/js/lib/menubar/sidebar.js"></script>
+    <script src="~/Admin/js/lib/preloader/pace.min.js"></script>
+    <!-- sidebar -->
+    <!-- bootstrap -->
+
+    <script src="~/Admin/js/lib/bootstrap.min.js"></script>
+    <script src="~/Admin/js/scripts.js"></script>
+    <!-- scripit init-->
+    <script src="~/Admin/js/lib/data-table/datatables.min.js"></script>
+    <script src="~/Admin/js/lib/data-table/dataTables.buttons.min.js"></script>
+    <script src="~/Admin/js/lib/data-table/buttons.flash.min.js"></script>
+    <script src="~/Admin/js/lib/data-table/jszip.min.js"></script>
+    <script src="~/Admin/js/lib/data-table/pdfmake.min.js"></script>
+    <script src="~/Admin/js/lib/data-table/vfs_fonts.js"></script>
+    <script src="~/Admin/js/lib/data-table/buttons.html5.min.js"></script>
+    <script src="~/Admin/js/lib/data-table/buttons.print.min.js"></script>
+    <script src="~/Admin/js/lib/data-table/datatables-init.js"></script>
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

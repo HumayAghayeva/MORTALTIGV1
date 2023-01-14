@@ -1,0 +1,147 @@
+﻿@model MORTALTIGV1.Models.Mapping
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+    <section id="banner">
+        <div class="container">
+            <button href="#" class="play-button">PLAY GAME</button>
+        </div>
+    </section>
+<main>
+    <section id="about">
+        <div class="container">
+            <div class="row">
+                <div data-aos-once="true" data-aos="fade-right" data-aos-duration="500" class="col-12 title">
+                    <h1>What is <span>MortalTiger</span></h1>
+                </div>
+                <div class="col-12 my-2 about-paragraph">
+                    <p data-aos-once="true" data-aos-duration="1000" data-aos="zoom-in">
+                        This project created by several members who are the best in their work. On the first stage, we want to
+                        give your attention on Tiger which is in Red Book. They lived in East Asia and we want to save them in NFT
+                        World.
+                        Our Designer created unique 2D Models of Tiger who are looks like fighter of Muay-Thai martial art. First
+                        collection will consist of 5555 NFT's. NFT's will peresented for minting as soon as possible. The place of
+                        launch will be anounced.
+                        In the first stage holders will be able to stake our Art NFT Collection and new 3D Collection in GIF
+                        format will be created as a second collection. Holders of the first collection will get GIF NFTs for free
+                        and will play our Game which will be presented for community.
+                        P2E Multiplayer Game will be created on Unity and will be similar to famous Mortal Kombar or Taken.
+                        Monthly tournaments will give players possibility to get different type of gifts.
+
+                    </p>
+                </div>
+                <div id="nft" data-aos-once="true" data-aos-duration="1000" data-aos="zoom-in" class="nft-wrapper">
+                    <div class="nft">
+                        <img style="width: 100%;" src="~/images/3.png" alt="" />
+                        <p style="text-align: center;">COMMON</p>
+                    </div>
+                    <div class="nft">
+                        <img style="width: 100%;" src="~/images/5.png" alt="" />
+                        <p style="text-align: center;">COMMON</p>
+                    </div>
+                    <div class="nft">
+                        <img style="width: 100%;" src="~/images/3.png" alt="" />
+                        <p style="text-align: center;">COMMON</p>
+                    </div>
+                    <div class="nft">
+                        <img style="width: 100%;" src="~/images/5.png" alt="" />
+                        <p style="text-align: center;">COMMON</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="team">
+        <div class="container">
+            <div class="row">
+                <div data-aos-once="true" data-aos="fade-right" data-aos-duration="500" class="title">
+                    <h1>Our Team</h1>
+                </div>
+                <div class="team-item-wrapper">
+                    <div class="row">
+                        <div data-aos-once="true" data-aos-duration="1000" data-aos-once="true" data-aos-delay="300"
+                             data-aos="zoom-in" class="team-item my-2 col-lg-4 col-sm-6">
+                            <img src="~/images/afsar_akbarov.jfif" alt="" />
+                            <h4>Afsar Akbarov</h4>
+                            <p>Founder</p>
+                        </div>
+                        <div data-aos-duration="1000" data-aos-once="true" data-aos-delay="300" data-aos="zoom-in"
+                             class="team-item my-2 col-lg-4 col-sm-6">
+                            <img src="~/images/arif_mammadov.jfif" alt="" />
+                            <h4>Arif Mammadov</h4>
+                            <p>CEO</p>
+                        </div>
+                        <div data-aos-duration="1000" data-aos-once="true" data-aos-delay="300" data-aos="zoom-in"
+                             class="team-item my-2 col-lg-4 col-sm-6">
+                            <img src="~/images/" alt="" />
+                            <h4>Taghi Zarbaliyev</h4>
+                            <p>Social Manager</p>
+                        </div>
+                        <div data-aos-duration="1000" data-aos-once="true" data-aos-delay="300" data-aos="zoom-in"
+                             class="team-item my-2 col-lg-4 col-sm-6">
+                            <img src="~/images/marat_bekov.jfif" alt="" />
+                            <h4>Marat Bekov</h4>
+                            <p>CMO</p>
+                        </div>
+                        <div data-aos-duration="1000" data-aos-once="true" data-aos-delay="300" data-aos="zoom-in"
+                             class="team-item my-2 col-lg-4 col-sm-6">
+                            <img src="~/images/humay_rzayeva.jpg" alt="" />
+                            <h4>Humay Rzaeva</h4>
+                            <p4>Back-end Developer</p4>
+                        </div>
+                        <div data-aos-duration="1000" data-aos-once="true" data-aos-delay="300" data-aos="zoom-in"
+                             class="team-item my-2 col-lg-4 col-sm-6">
+                            <img src="~/images/saftar_akbarov.jpg" alt="" />
+                            <h4>Saftar Akbarov</h4>
+                            <p>Front-end Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section id="roadmap">
+        <div style="margin-bottom: 10px; width: 85%;" class="title">
+            <h2>ROADMAP</h2>
+        </div>
+        @foreach (var detail in Model.RoadMap)
+        {
+      <pre data-aos="fade-up" data-aos-duration="1500">
+       @detail.IndexName      
+       @detail.Text
+       </pre >
+        }
+
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="title" id="faq">
+                <h2>FAQ</h2>
+            </div>
+            <div class="faq">
+                @foreach (var detail in Model.FQ)
+                {
+                    <div class="question">
+                        <h4>@detail.Subject</h4>
+                    </div>
+                    <div class="answer">
+                        <p>@detail.Text</p>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <hr>
+        <div class="col-12 d-flex justify-content-center">
+            <p style="color:#000">&copy; solonatiger.io </p>
+        </div>
+        <hr>
+    </footer>
+</main>
