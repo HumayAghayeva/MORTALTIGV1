@@ -1,24 +1,25 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Mortaltig.Domain.Models;
+using Mortaltig.Infrastructure.Repositories;
 using MORTALTIGV1.Models;
 
 namespace MORTALTIGV1.Controllers
 {
     public class RoadMapController : Controller
     {
-        public readonly Conn _dbContext;
-
-        public RoadMapController(Conn dbContext)
+        public readonly IRoadMapRepository _roadMapRepository;
+        public RoadMapController(IRoadMapRepository roadMapRepository)
         {
-            _dbContext = dbContext;
+            _roadMapRepository = roadMapRepository;
         }
 
 
         // GET: RoadMapController
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            ViewBag.maps = _dbContext.Set<RoadMap>().ToList();
+            ViewBag.maps = await _roadMapRepository.ListAsync();
             return View(ViewBag.maps);
         }
 
@@ -29,7 +30,7 @@ namespace MORTALTIGV1.Controllers
         }
 
         // GET: RoadMapController/Create
-        public ActionResult Create()
+        public async Task<ActionResult> Create()
         {
             return View();
         }
@@ -37,14 +38,13 @@ namespace MORTALTIGV1.Controllers
         // POST: RoadMapController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(RoadMap map)
+        public async Task<ActionResult> Create(RoadMap map)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    _dbContext.Add<RoadMap>(map);
-                    _dbContext.SaveChanges();
+                    await _roadMapRepository.AddAsync(map);
                     return RedirectToAction("Index");
                 }
 
@@ -57,41 +57,7 @@ namespace MORTALTIGV1.Controllers
         }
 
         // GET: RoadMapController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            var change = _dbContext.Set<RoadMap>().FirstOrDefault(w => w.Id == id);
-            return View(change);
-        }
-
-        // POST: RoadMapController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(RoadMap map, int id)
-        {
-            try
-            {
-                var change = _dbContext.Set<RoadMap>().FirstOrDefault(w => w.Id == id);
-                change.Text = map.Text;
-                change.Index = map.Index;
-                change.IndexName = map.IndexName;
-                _dbContext.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: RoadMapController/Delete/5
-        public ActionResult Delete(int id)
-        {
-
-            var change = _dbContext.Set<RoadMap>().FirstOrDefault(w => w.Id == id);
-            _dbContext.Remove<RoadMap>(change);
-            _dbContext.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        
 
         // POST: RoadMapController/Delete/5
         [HttpPost]

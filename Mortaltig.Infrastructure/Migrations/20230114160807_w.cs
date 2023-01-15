@@ -2,28 +2,14 @@
 
 #nullable disable
 
-namespace MORTALTIGV1.Migrations
+namespace Mortaltig.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class first : Migration
+    public partial class w : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(
-                name: "FAQs",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Text = table.Column<string>(type: "nvarchar(max)", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_FAQs", x => x.Id);
-                });
-
             migrationBuilder.CreateTable(
                 name: "RoadMaps",
                 columns: table => new
@@ -43,9 +29,6 @@ namespace MORTALTIGV1.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "FAQs");
-
             migrationBuilder.DropTable(
                 name: "RoadMaps");
         }

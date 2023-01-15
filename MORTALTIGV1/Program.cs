@@ -1,16 +1,21 @@
 using Microsoft.EntityFrameworkCore;
+using Mortaltig.Infrastructure.Repositories;
+using Mortaltig.Infrastructure.Data.Config;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<MORTALTIGV1.Models.Conn>(options =>
+builder.Services.AddRazorPages();
+builder.Services.AddDbContext<DbConn>(options =>
 {
     //The name of the connection string is taken from appsetting.json under ConnectionStrings
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConn"));
 });
-var app = builder.Build();
 
+//builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+//builder.Services.AddScoped<IRoadMapRepository, RoadMapRepository>();
+var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {

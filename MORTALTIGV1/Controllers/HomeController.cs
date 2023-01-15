@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Mortaltig.Infrastructure.Repositories;
 using MORTALTIGV1.Models;
 using System.Diagnostics;
 
@@ -7,19 +8,18 @@ namespace MORTALTIGV1.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        public readonly Conn _dbContext;
-        public HomeController(ILogger<HomeController> logger,Conn dbContext)
+        public readonly IRoadMapRepository _roadMapRepository;
+        public HomeController(ILogger<HomeController> logger, IRoadMapRepository roadMapRepository)
         {
             _logger = logger;
-            _dbContext = dbContext;
+            _roadMapRepository = roadMapRepository;
         }
 
         public IActionResult Index()
         {
-            Mapping map = new Mapping();
-            map.RoadMap = _dbContext.Set<RoadMap>().ToList();
-            map.FQ = _dbContext.Set<FAQ>().ToList();
-            return View(map);
+            //map.RoadMap = _dbContext.Set<RoadMap>().ToList();
+            //map.FQ = _dbContext.Set<FAQ>().ToList();
+            return View();
 
         }
 
