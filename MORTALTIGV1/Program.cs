@@ -13,8 +13,8 @@ builder.Services.AddDbContext<DbConn>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConn"));
 });
 
-//builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-//builder.Services.AddScoped<IRoadMapRepository, RoadMapRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IRoadMapRepository, RoadMapRepository>();
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
