@@ -11,6 +11,7 @@ builder.Services.AddDbContext<DbConn>(options =>
 });
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IRoadMapRepository, RoadMapRepository>();
+builder.Services.AddScoped<ITeamMembersRepository, TeamMembersRepository>();
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

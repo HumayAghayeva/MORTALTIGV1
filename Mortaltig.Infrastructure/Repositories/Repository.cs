@@ -17,12 +17,13 @@ namespace Mortaltig.Infrastructure.Repositories
         {
             _context = context;
         }
-
+        public IList<T> GetAllList()
+        {
+            return _context.Set<T>().ToList();
+        }
         public virtual async Task<IEnumerable<T>> ListAsync()
         {
-            return await _context.Set<T>()
-                                 .AsNoTracking()
-                                 .ToListAsync();
+            return await _context.Set<T>().ToListAsync();
         }
 
         public virtual async Task<T> FindByIdAsync(int id)
@@ -33,6 +34,7 @@ namespace Mortaltig.Infrastructure.Repositories
         public virtual async Task AddAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
+            _context.SaveChanges();
         }
 
         public virtual void Update(T entity)

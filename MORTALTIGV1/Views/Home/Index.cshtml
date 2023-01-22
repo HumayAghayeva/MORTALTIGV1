@@ -102,40 +102,13 @@
         </div>
     </section>
 
-    <!-- Roadmap -->
-    <section id="roadmap">
-        <div style="margin-bottom: 10px; width: 85%;" class="title">
-            <h2>ROADMAP</h2>
-        </div>
-      @*  @foreach (var detail in Model.RoadMap)
-        {
-      <pre data-aos="fade-up" data-aos-duration="1500">
-       @detail.IndexName      
-       @detail.Text
-       </pre >
-        }*@
-
+ 
     </section>
 
-    <section>
-        <div class="container">
-            <div class="title" id="faq">
-                <h2>FAQ</h2>
-            </div>
-            <div class="faq">
-                @*@foreach (var detail in Model.FQ)
-                {
-                    <div class="question">
-                        <h4>@detail.Subject</h4>
-                    </div>
-                    <div class="answer">
-                        <p>@detail.Text</p>
-                    </div>
 
-                }*@
-            </div>
-        </div>
-    </section>
+        @(await Component.InvokeAsync("RoadMap"))
+       
+
 
     <footer>
         <hr>

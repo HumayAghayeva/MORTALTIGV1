@@ -12,6 +12,7 @@ namespace Mortaltig.Domain.Interfaces
         Task<T> FindByIdAsync(int id);
         Task AddAsync(T entity);
         void Update(T entity);
+        IList<T> GetAllList();
         void Delete(T entity);
     }
 }

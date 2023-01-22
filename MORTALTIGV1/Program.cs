@@ -11,10 +11,12 @@ builder.Services.AddDbContext<DbConn>(options =>
 {
     //The name of the connection string is taken from appsetting.json under ConnectionStrings
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConn"));
+    options.UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
 });
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IRoadMapRepository, RoadMapRepository>();
+//builder.Services.AddScoped<ITeamMemberRepository, TeamMemberRepository>();
 var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

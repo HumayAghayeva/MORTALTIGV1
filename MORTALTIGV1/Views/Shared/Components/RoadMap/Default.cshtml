@@ -1,0 +1,19 @@
+﻿@model List<Mortaltig.Domain.Models.RoadMap>
+
+@{
+    Layout = null;
+}
+
+<!-- Roadmap -->
+  <section>
+    <div style="margin-bottom: 10px; width: 85%;" class="title">
+        <h2>ROADMAP</h2>
+    </div>
+   @foreach (var detail in Model)
+    {
+        <pre data-aos="fade-up" data-aos-duration="1500">
+        @detail.IndexName
+        @detail.Text
+        </pre >
+    }
+</section>

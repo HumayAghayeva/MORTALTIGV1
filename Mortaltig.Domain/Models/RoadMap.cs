@@ -12,7 +12,7 @@ namespace Mortaltig.Domain.Models
         [Key]
         public int Id { get; set; }
         public int Index { get; set; }
-        public string? IndexName { get; set; }
-        public string? Text { get; set; }
+        public string IndexName { get; set; }
+        public string Text { get; set; }
     }
 }

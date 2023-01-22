@@ -73,5 +73,9 @@ namespace MORTALTIGV1.Controllers
                 return View();
             }
         }
+        public async Task<ActionResult> Createtest()
+        {
+            return View();
+        }
     }
 }

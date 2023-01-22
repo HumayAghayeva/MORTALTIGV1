@@ -2,46 +2,53 @@
 using Microsoft.AspNetCore.Mvc;
 using Mortaltig.Domain.Models;
 using Mortaltig.Infrastructure.Repositories;
-using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
+using Microsoft.AspNetCore.Hosting;
 
 namespace AdminMortaltig.Controllers
 {
-    public class RoadMapController : Controller
+    public class TeamMemberController : Controller
     {
-        public readonly IRoadMapRepository _roadMapRepository;
-        public RoadMapController(IRoadMapRepository roadMapRepository)
+        public readonly ITeamMembersRepository _teamMembers;
+        private readonly IWebHostEnvironment _hostingEnvironment;
+        public TeamMemberController(ITeamMembersRepository teamMembers, IWebHostEnvironment hostingEnvironment)
         {
-            _roadMapRepository = roadMapRepository;
+            _teamMembers = teamMembers;
+            _hostingEnvironment = hostingEnvironment;
         }
-        // GET: RoadMapController1
+        // GET: TeamMembers
         public ActionResult Index()
         {
             return View();
         }
 
-        // GET: RoadMapController1/Details/5
+        // GET: TeamMembers/Details/5
         public ActionResult Details(int id)
         {
             return View();
         }
+
+        // GET: TeamMembers/Create
         public ActionResult Create()
         {
             return View();
         }
-        public ActionResult InvokeAsync()
-        {
-            return ViewComponent("RoadMap");
-        }
-       
+
+        // POST: TeamMembers/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create(RoadMap map)
+        public async Task<ActionResult> Create(TeamMembers teamMembers)
         {
             try
             {
                 if (ModelState.IsValid)
                 {
-                    await _roadMapRepository.AddAsync(map);
+                    if (teamMembers.Photo != null)
+                    {
+                        var name = Path.Combine(_hostingEnvironment.WebRootPath + "/MemberPhotos", Path.GetFileName(teamMembers.Photo.FileName));
+                        await teamMembers.Photo.CopyToAsync(new FileStream(name, FileMode.Create));
+                        teamMembers.PhotoUrl = teamMembers.Photo.FileName;
+                    }
+                    await _teamMembers.AddAsync(teamMembers);
                     return RedirectToAction("Index");
                 }
 
@@ -52,13 +59,14 @@ namespace AdminMortaltig.Controllers
                 return View();
             }
         }
-        // GET: RoadMapController1/Edit/5
+
+        // GET: TeamMembers/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: RoadMapController1/Edit/5
+        // POST: TeamMembers/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -73,13 +81,13 @@ namespace AdminMortaltig.Controllers
             }
         }
 
-        // GET: RoadMapController1/Delete/5
+        // GET: TeamMembers/Delete/5
         public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: RoadMapController1/Delete/5
+        // POST: TeamMembers/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
