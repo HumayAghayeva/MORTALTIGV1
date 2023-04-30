@@ -9,16 +9,19 @@ namespace MORTALTIGV1.Controllers
 {
     public class RoadMapController : Controller
     {
-        public readonly IRoadMapRepository _roadMapRepository;
-        public RoadMapController(IRoadMapRepository roadMapRepository)
+        private readonly IRoadMapRepository _roadMapRepository;
+        private readonly ILogger<HomeController> _logging;
+        public RoadMapController(IRoadMapRepository roadMapRepository, ILogger<HomeController> logging)
         {
             _roadMapRepository = roadMapRepository;
+            _logging = logging; 
         }
 
 
         // GET: RoadMapController
         public async Task<ActionResult> Index()
         {
+            _logging.LogInformation("rfgd");
             ViewBag.maps = await _roadMapRepository.ListAsync();
             return View(ViewBag.maps);
         }

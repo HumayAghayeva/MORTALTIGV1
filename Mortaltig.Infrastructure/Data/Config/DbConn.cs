@@ -17,11 +17,11 @@ namespace Mortaltig.Infrastructure.Data.Config
         public DbSet<RoadMap> RoadMaps { get; set; }
         public DbSet<TeamMembers> TeamMembers { get; set; }
 
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    modelBuilder.Entity<TeamMembers>().Ignore(t => t.);
-        //    base.OnModelCreating(modelBuilder);
-        //}
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TeamMembers>().Ignore(t => t.Photo);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 
 }

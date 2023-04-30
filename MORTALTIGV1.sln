@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mortaltig.Infrastructure", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Mortaltig.Domain", "Mortaltig.Domain\Mortaltig.Domain.csproj", "{F3680001-ED4E-465A-AF81-0B37D8E1B8A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminMortaltig", "AdminMortaltig\AdminMortaltig.csproj", "{8BC23AF0-CA1E-4219-9C2E-67CE243E5695}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AdminMortaltig", "AdminMortaltig\AdminMortaltig.csproj", "{8BC23AF0-CA1E-4219-9C2E-67CE243E5695}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EE4B3DE2-2F37-472D-910D-518C4492A466}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +38,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{268DB659-76AA-49EA-BCA8-068DBBAE6F8D} = {EE4B3DE2-2F37-472D-910D-518C4492A466}
+		{F4234640-F3B7-4DB3-BB2C-AC4982226FBE} = {EE4B3DE2-2F37-472D-910D-518C4492A466}
+		{F3680001-ED4E-465A-AF81-0B37D8E1B8A3} = {EE4B3DE2-2F37-472D-910D-518C4492A466}
+		{8BC23AF0-CA1E-4219-9C2E-67CE243E5695} = {EE4B3DE2-2F37-472D-910D-518C4492A466}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1BC71ADD-6341-4FB8-98C4-6F17EDD23013}
